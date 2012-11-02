@@ -3,8 +3,7 @@ class FriendsController < ApplicationController
   # GET /friends.json
   def index
     sa = SentimentAnalysis::Client.new(:api_key => 'TQACnH1Um6BIRu1XYioA')
-    debugger
-    @friends = sa.review("i don't like this")
+    @friends = sa.review(:text => "i don't like this", :format => :json).to_hash
 
     respond_to do |format|
       format.html # index.html.erb
