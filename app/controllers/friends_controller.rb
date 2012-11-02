@@ -5,6 +5,8 @@ class FriendsController < ApplicationController
     sa = SentimentAnalysis::Client.new(:api_key => 'TQACnH1Um6BIRu1XYioA')
     @friends = sa.review(:text => "i don't like this", :format => :json).to_hash
 
+    @oauth = Koala::Facebook::OAuth.new("461211400587377", "876a1ced518531a3fbfed950de83661b", callback_url)
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @friends }
