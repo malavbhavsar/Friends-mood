@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a73fb5f1-aa6d-48bf-9e60-04248b176dd1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/fbhack.iml" afterPath="$PROJECT_DIR$/.idea/fbhack.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/friends_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/friends_controller.rb" />
     </list>
     <ignored path="fbhack.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,19 +30,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Gemfile" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Gemfile" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Gemfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="48" selection-start="154" selection-end="154" vertical-scroll-proportion="0.0">
+            <state line="28" column="70" selection-start="600" selection-end="600" vertical-scroll-proportion="0.7407407">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="friends_controller.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="friends_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/friends_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="84" selection-start="340" selection-end="340" vertical-scroll-proportion="0.18518518">
+            <state line="23" column="46" selection-start="692" selection-end="698" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -99,8 +95,8 @@
         <option value="$PROJECT_DIR$/app/controllers/friend_controller.rb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/app/views/friends/index.html.erb" />
-        <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/app/controllers/friends_controller.rb" />
+        <option value="$PROJECT_DIR$/Gemfile" />
       </list>
     </option>
   </component>
@@ -679,16 +675,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Gemfile">
+    <entry file="file://$PROJECT_DIR$/app/controllers/friends_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="48" selection-start="154" selection-end="154" vertical-scroll-proportion="0.0">
+        <state line="23" column="46" selection-start="692" selection-end="698" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/friends_controller.rb">
+    <entry file="file://$PROJECT_DIR$/Gemfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="84" selection-start="340" selection-end="340" vertical-scroll-proportion="0.18518518">
+        <state line="28" column="70" selection-start="600" selection-end="600" vertical-scroll-proportion="0.7407407">
           <folding />
         </state>
       </provider>
