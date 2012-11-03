@@ -5,7 +5,9 @@
         <th>Mood</th>
       </tr>
       <% @friends.each do |f| %>
-      <tr>
+      <% if (f["status"]["sentiment"]==":)") %>
+      <tr class= "success"><% else %>
+       <tr class="error"   ><% end %>
         <td><%= f["name"] %></td>
         <td><%= f["status"]["text"] %></td>
         <td><%= f["status"]["sentiment"] %></td>
