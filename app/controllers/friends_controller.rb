@@ -20,7 +20,7 @@ class FriendsController < ApplicationController
     f["id"] = params[:friend_id]
     f["name"] = params[:friend_name]
 
-      status = $GRAPH.get_connections(f["id"],"statuses",{:since => Date.yesterday, :limit =>1})
+      status = $GRAPH.get_connections(f["id"],"statuses",{:since => Date.current, :limit =>1})
       unless status.empty?
         current = 0
         begin
