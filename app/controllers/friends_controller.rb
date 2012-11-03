@@ -5,18 +5,18 @@ class FriendsController < ApplicationController
   # GET /friends
   # GET /friends.json
   def index
-    sent_api = Sentimentalizer.new
     @oauth = Koala::Facebook::OAuth.new("369600096459806", "8f4f1a508ccc95b4ca0d373897591ea7", "http://127.0.0.1:3000"+friends_path)
     oauth_access_token = @oauth.get_access_token(params[:code])
     @graph = Koala::Facebook::API.new(oauth_access_token)
-    friends = @graph.get_connections("me", "friends",{:limit => 10})
+    friends = @graph.get_connections("me", "friends",{:limit => 5})
     @statuses = Array.new
     @friends = Array.new
     friends.each do |f|
       status = @graph.get_connections(f["id"],"statuses",{:limit =>1})
       unless status.empty?
+        puts status
         @friends << f
-        @statuses << JSON.parse(sent_api.analyze(status[0]["message"]))
+        @statuses << JSON.parse($SENT_API.analyze(status[0]["message"]))
       end
       puts @friends
       puts @statuses
