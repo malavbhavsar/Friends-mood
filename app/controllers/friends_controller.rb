@@ -9,17 +9,14 @@ class FriendsController < ApplicationController
     oauth_access_token = @oauth.get_access_token(params[:code])
     @graph = Koala::Facebook::API.new(oauth_access_token)
     friends = @graph.get_connections("me", "friends",{:limit => 5})
-    @statuses = Array.new
     @friends = Array.new
     friends.each do |f|
       status = @graph.get_connections(f["id"],"statuses",{:limit =>1})
       unless status.empty?
-        puts status
+        f["status"] = JSON.parse($SENT_API.analyze(status[0]["message"]))
         @friends << f
-        @statuses << JSON.parse($SENT_API.analyze(status[0]["message"]))
       end
       puts @friends
-      puts @statuses
     end
     respond_to do |format|
       format.html # index.html.erb
