@@ -6,9 +6,11 @@
       </tr>
       <% @friends.each do |f| %>
       <% if (f["status"]["sentiment"]==":)") %>
-      <tr class= "success"><% else %>
-       <tr class="error"   ><% end %>
-        <td><%= f["name"] %></td>
+      <tr class= "success"><% elsif (f["status"]["sentiment"]==":(") %>
+       <tr class="error"   ><% else  %>
+      <tr class="warning">
+      <% end %>
+        <td><%= link_to f["name"], 'http://www.facebook.com/'+f["id"] %></td>
         <td><%= f["status"]["text"] %></td>
         <td><%= f["status"]["sentiment"] %></td>
       </tr>

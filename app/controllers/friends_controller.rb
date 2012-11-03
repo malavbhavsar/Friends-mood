@@ -8,10 +8,10 @@ class FriendsController < ApplicationController
     @oauth = Koala::Facebook::OAuth.new("369600096459806", "8f4f1a508ccc95b4ca0d373897591ea7", "http://127.0.0.1:3000"+friends_path)
     oauth_access_token = @oauth.get_access_token(params[:code])
     @graph = Koala::Facebook::API.new(oauth_access_token)
-    friends = @graph.get_connections("me", "friends",{:limit => 50})
+    friends = @graph.get_connections("me", "friends",{:limit => 250 })
     @friends = Array.new
     friends.each do |f|
-      status = @graph.get_connections(f["id"],"statuses",{:limit =>1})
+      status = @graph.get_connections(f["id"],"statuses",{:since => Date.yesterday, :limit =>1})
       unless status.empty?
         current = 0
         begin
