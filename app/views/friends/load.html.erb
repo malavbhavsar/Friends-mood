@@ -1,13 +1,13 @@
 <%if @fr%>
 <% if (@fr["status"]["sentiment"]==":)") %>
-    <tr class= "success"><% elsif (@fr["status"]["sentiment"]==":(") %>
-    <tr class="error"   ><% else  %>
-    <tr class="warning">
+    <tr style="background-color: #dff0d8;"><% elsif (@fr["status"]["sentiment"]==":(") %>
+    <tr style="background-color: #f2dede;"   ><% else  %>
+    <tr style="background-color: #fcf8e3;">
 <% end %>
 <td><%= link_to @fr["name"], 'http://www.facebook.com/'+@fr["id"] %></td>
 <td><%= link_to @fr["status"]["text"], 'http://www.facebook.com/'+@fr["id"]+'/posts/'+@fr["status"]["id"] %></td>
-<td><% if (@fr["status"]["sentiment"]==":)") %> <img src="/images/happy.png" width="40" height="40">
-  <% elsif (@fr["status"]["sentiment"]==":(")  %><img src="/images/sad.png" width="40" height="40">
-  <% else %> <img src="/images/blank.png" width="40" height="40">  <% end %> </td>
+<td><% if (@fr["status"]["sentiment"]==":)") %> <%= image_tag("happy.png", :size => "40x40", :alt => "Happy")%>
+  <% elsif (@fr["status"]["sentiment"]==":(")  %><%= image_tag("sad.png", :size => "40x40", :alt => "Sad")%>
+  <% else %> <%= image_tag("blank.png", :size => "40x40", :alt => "Blank")%> <% end %> </td>
 </tr>
 <%end%>
