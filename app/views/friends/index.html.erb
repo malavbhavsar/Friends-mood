@@ -1,19 +1,53 @@
+
+
 <table>
   <tr>
+    <td>
+    <table class="table table-hover">
+      <tr>
+        <th>Name</th>
+      </tr>
+     <%
+        proper_friends = Array.new
+        @friends.each do |f|
+           if @status.empty?
+             @friends.delete(f)
+           else
+             proper_friends << f
+           end
+        end
+     %>
+      <% proper_friends.each do |f| %>
+      <tr>
+        <td><%= f["name"] %></td>
+      </tr>
+          <%
+             end %>
+    </table>
+    </td>
+  <td>
+  <table class="table table-hover">
+  <tr>
+    <th>Status</th>
     <th></th>
-    <th></th>
-    <th></th>
+    <th>Mood</th>
   </tr>
 
   <% @statuses.each do |friend| %>
       <tr>
-        <td><%= friend %></td>
+        <td><%= friend["text"] %></td>
         <td></td>
-
+        <td><%= if (friend["sentiment"] == ":)")
+            "Happy"
+            else
+            "Sad"
+            end
+        %></td>
       </tr>
   <% end %>
+    </table>
+  </td>
+  </tr>
 </table>
 
 <br />
-
-<%= link_to 'New Friend', new_friend_path %>
