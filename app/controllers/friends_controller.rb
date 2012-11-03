@@ -7,11 +7,20 @@ class FriendsController < ApplicationController
   def index
     @oauth = Koala::Facebook::OAuth.new(Yetting.api_key, Yetting.app_secret, Yetting.site+friends_path)
     oauth_access_token = @oauth.get_access_token(params[:code])
-    @graph = Koala::Facebook::API.new(oauth_access_token)
-    friends = @graph.get_connections("me", "friends",{:limit => 200 })
-    @friends = Array.new
-    friends.each do |f|
-      status = @graph.get_connections(f["id"],"statuses",{:since => Date.yesterday, :limit =>1})
+    $GRAPH = Koala::Facebook::API.new(oauth_access_token)
+    @ajax_friends = $GRAPH.get_connections("me", "friends").map {|item| item.values}.flatten
+    respond_to do |format|
+      format.html # index.html.erb
+    end
+  end
+
+  def load
+
+    f = Hash.new
+    f["id"] = params[:friend_id]
+    f["name"] = params[:friend_name]
+
+      status = $GRAPH.get_connections(f["id"],"statuses",{:since => Date.yesterday, :limit =>1})
       unless status.empty?
         current = 0
         begin
@@ -20,16 +29,15 @@ class FriendsController < ApplicationController
         rescue NoMethodError
           puts "Chinese!"
           current = 1
+          @fr = {}
         end
         if current == 0
-          @friends << f
+          @fr = f
         end
       end
-      puts @friends
-    end
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @friends }
+      format.js {render :layout => false }
+      format.html {render :layout => false }
     end
   end
 
