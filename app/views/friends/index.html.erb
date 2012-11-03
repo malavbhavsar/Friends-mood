@@ -1,5 +1,3 @@
-<h1>Listing friends</h1>
-
 <table>
   <tr>
     <th></th>
@@ -7,9 +5,13 @@
     <th></th>
   </tr>
 
-  <%= @friends %>
+  <% @statuses.each do |friend| %>
+      <tr>
+        <td><%= friend %></td>
+        <td></td>
 
-
+      </tr>
+  <% end %>
 </table>
 
 <br />

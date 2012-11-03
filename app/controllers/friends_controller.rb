@@ -3,10 +3,20 @@ class FriendsController < ApplicationController
   # GET /friends.json
   def index
     sa = SentimentAnalysis::Client.new(:api_key => 'TQACnH1Um6BIRu1XYioA')
-    @friends = sa.review(:text => "i don't like this", :format => :json).to_hash
-
-    @oauth = Koala::Facebook::OAuth.new("461211400587377", "876a1ced518531a3fbfed950de83661b", callback_url)
-
+    @oauth = Koala::Facebook::OAuth.new("369600096459806", "8f4f1a508ccc95b4ca0d373897591ea7", "http://127.0.0.1:3000"+friends_path)
+    oauth_access_token = @oauth.get_access_token(params[:code])
+    @graph = Koala::Facebook::API.new(oauth_access_token)
+    @friends = @graph.get_connections("me", "friends",{:limit => 20})
+    @statuses = Array.new
+    @friends.each do |f|
+      statuses = @graph.get_connections(f["id"],"statuses",{:limit =>1})
+      if statuses.empty?
+        @friends.delete(f)
+      else
+        @statuses << sa.review(:text=>statuses[0]["message"])
+      end
+    end
+    #sa.review(:text => @friends[0]["message"], :format => :json).to_hash
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @friends }
