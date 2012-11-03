@@ -29,6 +29,8 @@ gem 'jquery-rails'
 
 gem 'sentiment_analysis'
 
+gem "yettings"
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

@@ -1,0 +1,16 @@
+defaults: &defaults
+  api_key: 369600096459806
+  app_secret: 8f4f1a508ccc95b4ca0d373897591ea7
+  site: http://127.0.0.1:3000/
+
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  api_key: 364900563602766
+  app_secret: 47ad925ea82814864ed425e166f77701
+  site: http://damp-anchorage-5339.herokuapp.com/
