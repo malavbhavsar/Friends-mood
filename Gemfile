@@ -8,13 +8,12 @@ group :test, :development do
   gem 'sqlite3'
 end
 
-=begin
+
 
 group :deployment do
   gem 'pg'
 end
 
-=end
 
 gem 'certified'
 
