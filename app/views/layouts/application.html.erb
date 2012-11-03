@@ -1,14 +1,53 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Fbhack</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <title><%= yield(:title) %></title>
+  <%= stylesheet_link_tag    "application", media: "all" %>
   <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", "jquery.rails.js" %>
   <%= csrf_meta_tags %>
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="css/bootstrap.css" rel="stylesheet">                     <!-- providing bootstrap styles -->
+  <style type="text/css">
+      body {
+          padding-top: 60px;
+          padding-bottom: 40px;
+          width: 100%;
+      }
+      #silverlightControlHost {
+          height: 450px;
+          width: 100%;
+      }
+  </style>
+  <link href="css/bootstrap-responsive.css" rel="stylesheet">
+
 </head>
 <body>
+<header class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <%= link_to "Friend's Mood", '#', id: "logo", class: "brand"%>         <!-- lets user come to main page from any page -->
 
-<%= yield %>
+    </div>
+  </div>
+</header>
+
+<div class="container" style="width: 95%;margin-left: 40px;">
+  <%= yield %>
+  <br/><br/>
+
+
+  <footer class="footer" style="color: #a9a9a9;">
+    <nav>
+      <small class="nav pull-left">&copy; Facebook Pittsburgh Hackathon</small>
+    </nav>
+  </footer>
+
+</div>
 
 </body>
 </html>
