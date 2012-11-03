@@ -1,5 +1,3 @@
-
-
 <table>
   <tr>
     <td>
@@ -7,22 +5,11 @@
       <tr>
         <th>Name</th>
       </tr>
-     <%
-        proper_friends = Array.new
-        @friends.each do |f|
-           if @status.empty?
-             @friends.delete(f)
-           else
-             proper_friends << f
-           end
-        end
-     %>
-      <% proper_friends.each do |f| %>
+      <% @friends.each do |f| %>
       <tr>
         <td><%= f["name"] %></td>
       </tr>
-          <%
-             end %>
+      <%end %>
     </table>
     </td>
   <td>
@@ -33,11 +20,11 @@
     <th>Mood</th>
   </tr>
 
-  <% @statuses.each do |friend| %>
+  <% @statuses.each do |status| %>
       <tr>
-        <td><%= friend["text"] %></td>
+        <td><%= status["text"] %></td>
         <td></td>
-        <td><%= if (friend["sentiment"] == ":)")
+        <td><%= if status["sentiment"] == ":)"
             "Happy"
             else
             "Sad"
