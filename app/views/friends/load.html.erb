@@ -6,8 +6,8 @@
 <% end %>
 <td><%= link_to @fr["name"], 'http://www.facebook.com/'+@fr["id"] %></td>
 <td><%= link_to @fr["status"]["text"], 'http://www.facebook.com/'+@fr["id"]+'/posts/'+@fr["status"]["id"] %></td>
-<td><% if (@fr["status"]["sentiment"]==":)") %> <%= image_tag("happy.png", :size => "40x40", :alt => "Happy")%>
-  <% elsif (@fr["status"]["sentiment"]==":(")  %><%= image_tag("sad.png", :size => "40x40", :alt => "Sad")%>
-  <% else %> <%= image_tag("blank.png", :size => "40x40", :alt => "Blank")%> <% end %> </td>
+<td><% if (@fr["status"]["sentiment"]==":)") %> <b><i>Happy</i></b>
+  <% elsif (@fr["status"]["sentiment"]==":(")  %><b><i>Sad</i></b>
+  <% else %> <b><i>Neutral</i></b> <% end %> </td>
 </tr>
 <%end%>
