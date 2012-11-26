@@ -1,9 +1,7 @@
-require "sentimentalizer/lib/api/api"
+require 'sentimentalizer'
 
-module Fbhack
-  class Application < Rails::Application
-    config.after_initialize do
-      $SENT_API = Sentimentalizer.new
-    end
+Fbhack::Application.configure do
+  config.after_initialize do
+    Sentimentalizer.setup
   end
 end

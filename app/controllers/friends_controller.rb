@@ -1,4 +1,4 @@
-require 'sentimentalizer/lib/api/api'
+require 'sentimentalizer'
 require 'json'
 
 class FriendsController < ApplicationController
@@ -15,24 +15,39 @@ class FriendsController < ApplicationController
   end
 
   def load
-
     f = Hash.new
-    f["id"] = params[:friend_id]
-    f["name"] = params[:friend_name]
+    f["id"] = Array.new
+    f["name"] = Array.new
 
-      status = $GRAPH.get_connections(f["id"],"statuses",{:since => Date.current, :limit =>1})
-      unless status.empty?
-        current = 0
-        begin
-          f["status"] = JSON.parse($SENT_API.analyze(status[0]["message"]))
-          f["status"]["id"] = status[0]["id"]
-        rescue NoMethodError
-          puts "Chinese!"
-          current = 1
-          @fr = {}
+    params[:data].each do |k,v|
+      f["id"] << v["id"]
+      f["name"] << v["name"]
+    end
+
+    f2 = Array.new(50) { Hash.new }
+
+    @frs = Array.new
+
+      statuses = $GRAPH.batch do |batch_api|
+        for i in 0..(f["id"].length-1) do
+          batch_api.get_connections(f["id"][i],"statuses",{:since => 1.day.ago.to_s })
         end
-        if current == 0
-          @fr = f
+      end
+      for j in 0..statuses.length-1 do
+        unless statuses[j].empty?
+          current = 0
+          begin
+            f2[j]["id"] = f["id"][j]
+            f2[j]["name"] = f["name"][j]
+            f2[j]["status"] = JSON.parse(Sentimentalizer.analyze(statuses[j][0]["message"]))
+            f2[j]["status"]["id"] = statuses[j][0]["id"]
+          rescue NoMethodError
+            puts "Chinese!"
+            current = 1
+          end
+          if current == 0
+            @frs << f2[j]
+          end
         end
       end
     respond_to do |format|

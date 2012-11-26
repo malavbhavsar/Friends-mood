@@ -34,7 +34,7 @@ end
 
 gem 'jquery-rails'
 
-gem 'sentiment_analysis'
+gem 'sentimentalizer'
 
 gem "yettings"
 

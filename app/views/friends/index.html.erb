@@ -7,10 +7,19 @@
 </table>
 <script>
   var ajax_friends = <%=raw @ajax_friends%>;
-  for(i=0;i<ajax_friends.length;i=i+2){
+  for(i=0;i<=ajax_friends.length/100;i=i+1){
+
+    var jsonobj = {};
+    jsonobj["data"]=[];
+    for(j=0;j<100 && (((i*100)+j) in ajax_friends);j=j+2){
+      jsonobj["data"].push({"id": ajax_friends[i*100+j+1], "name": ajax_friends[i*100+j]});
+    }
+      console.log(jsonobj);
     $.ajax({
-        url: "/load"+"/"+ajax_friends[i+1]+"/"+ajax_friends[i],
+        url: "/load",
+        type: 'POST',
         cache: false,
+        data: jsonobj,
         success: function(html){
             $("#main").append(html);
         }

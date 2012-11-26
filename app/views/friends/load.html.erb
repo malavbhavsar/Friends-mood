@@ -1,13 +1,16 @@
-<%if @fr%>
-<% if (@fr["status"]["sentiment"]==":)") %>
-    <tr style="background-color: #dff0d8;"><% elsif (@fr["status"]["sentiment"]==":(") %>
+<% @frs.each do |fr| %>
+
+<%if fr%>
+<% if (fr["status"]["sentiment"]==":)") %>
+    <tr style="background-color: #dff0d8;"><% elsif (fr["status"]["sentiment"]==":(") %>
     <tr style="background-color: #f2dede;"   ><% else  %>
     <tr style="background-color: #fcf8e3;">
 <% end %>
-<td><%= link_to @fr["name"], 'http://www.facebook.com/'+@fr["id"] %></td>
-<td><%= link_to @fr["status"]["text"], 'http://www.facebook.com/'+@fr["id"]+'/posts/'+@fr["status"]["id"] %></td>
-<td><% if (@fr["status"]["sentiment"]==":)") %> <b><i>Happy</i></b>
-  <% elsif (@fr["status"]["sentiment"]==":(")  %>  <b><i>Sad</i></b>
+<td><%= link_to fr["name"], 'http://www.facebook.com/'+fr["id"] %></td>
+<td><%= link_to fr["status"]["text"], 'http://www.facebook.com/'+fr["id"]+'/posts/'+fr["status"]["id"] %></td>
+<td><% if (fr["status"]["sentiment"]==":)") %> <b><i>Happy</i></b>
+  <% elsif (fr["status"]["sentiment"]==":(")  %>  <b><i>Sad</i></b>
   <% else %> <b><i>Neutral</i></b> <% end %> </td>
 </tr>
+<%end%>
 <%end%>
