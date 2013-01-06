@@ -1,6 +1,6 @@
 fbhack
 ======
-This was [rpatwa](https://github.com/rpatwa) and my submission to [Pittsburgh Hackathon](https://www.facebook.com/events/402569479796860/) organized by facebook.
+This was [@rpatwa's](https://github.com/rpatwa) and my submission to [Pittsburgh Hackathon](https://www.facebook.com/events/402569479796860/) organized by facebook.
 
 It uses rails as a webframework to get the recent statuses of your facebook friends and does sentiment analysis, using a [gem](https://github.com/malavbhavsar/sentimentalizer) that I created, to tell you how are your friends feeling.
 
